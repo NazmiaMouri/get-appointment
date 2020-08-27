@@ -1,34 +1,29 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Media} from 'reactstrap'
-import {DOCTORS} from '../shared/doctors' 
+import { Link} from 'react-router-dom';
 
-
-class Doctor extends Component{
-    constructor(props) {
-        super(props);
+function Doctor (props){
     
-        this.state ={
-          doctors: DOCTORS,
-          selecteddoctor:null
-        };
-    }
-    render(){
-    const show_doctors=this.state.doctors.map((doctor) => {
+    
+    const show_doctors=props.doctors.map((doctor) => {
         return (
-            <div key={doctor.id} className='col-12 mt-5'>
-                <Media tag='li'>
+            <div  className='col-12 mt-5'>
+               <Link to={`/home/${doctor.id}`} >
+                <Media tag='li' key={doctor.id} >
                 
                     <Media left middle>
                         <Media object src={doctor.image} alt={doctor.name}/>
-    
                     </Media>
                     <Media body className='ml-5'>
                     <Media heading>{doctor.name}</Media>
                     <h6> {doctor.org}</h6> 
-                    <button className='bg-primary 'id='btn-font'>View Schedule</button>
-                    
+                   
+                
                     </Media>
+                   
                 </Media>
+                </Link>  
+              
             </div>
             
         );
@@ -50,5 +45,5 @@ return(
 )    
 
 }
-}
+
 export default Doctor;
