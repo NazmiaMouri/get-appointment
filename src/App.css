@@ -30,4 +30,10 @@ address{
 #btn-font{
   color: floralwhite;
 }
+.e-control{
+  margin-bottom: 50px;
+}
+.e-work-cell .e-alternate-cells{
+      display: invisible;
+}
 
