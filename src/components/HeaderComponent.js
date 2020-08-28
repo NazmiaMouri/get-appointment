@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {Jumbotron,Image} from 'reactstrap';
+import {Jumbotron} from 'reactstrap';
 
 
 function Header () {
