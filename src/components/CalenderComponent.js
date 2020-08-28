@@ -100,18 +100,52 @@ class Calender extends React.Component {
       
     
 
-    
-      if (weekEnds.indexOf(date.getDay()) >= 0 ){
-        if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+    let today=new Date()
+   
+   if(date.getMonth() < today.getMonth()){
      
-        return `<a href='#form'><button  class='btn'  '><i class='fa fa-check floral-white'style='color:green'></i></button></a>`;
-          }
-        
-        
-        }
-        console.log("BOXXXXXXX"+ boxHeight)
-      return '';
+    if (weekEnds.indexOf(date.getDay()) >= 0 ){
+      if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+ 
+        return `<a href='#form'><i class='fa fa-check' style='color:gray'></i></a>`;
+      }  
+    }
   }
+    else if(date.getMonth() === today.getMonth()){
+      
+      if(date.getDate() >= today.getDate()){
+        
+        if (weekEnds.indexOf(date.getDay()) >= 0 ){
+          if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+    
+            return `<a href='#form'><i class='fa fa-check' style='color:green'></i></a>`;
+          }  
+        }
+      }else if(date.getDate() < today.getDate()){
+        
+        if (weekEnds.indexOf(date.getDay()) >= 0 ){
+          if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+    
+            return `<a href='#form'><i class='fa fa-check' style='color:gray'></i></a>`;
+          }  
+        }
+
+          
+    }
+  }
+  else if(date.getMonth() > today.getMonth()){
+    
+    if (weekEnds.indexOf(date.getDay()) >= 0 ){
+      if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+ 
+        return `<a href='#form'><i class='fa fa-check' style='color:green'></i></a>`;
+      }  
+    }
+  }
+       
+      return '';
+  
+}
   ;
   cellTemplate(props) {
       if (props.type === "workCells") {
@@ -137,7 +171,7 @@ class Calender extends React.Component {
                     </div>
     {/*---------------------------------CALENDER VIEW --------------------------------------------------  */}
                 <div className='mb-10'>
-                    <ScheduleComponent  height='500px'cellTemplate={this.cellTemplate.bind(this)}>
+                    <ScheduleComponent  height='500px'  cellTemplate={this.cellTemplate.bind(this)}>
                       <ViewsDirective>
                         
                         <ViewDirective option='Week' startHour='08:00' endHour='25:00' timeScale={{ enable: true, slotCount: 60/this.props.doctor.visitDurationInMin }}/>
