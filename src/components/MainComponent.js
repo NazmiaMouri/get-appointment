@@ -6,7 +6,8 @@ import Calender from './CalenderComponent'
 import { DOCTORS } from '../shared/doctors'
 
 import {Switch , Route, Redirect, withRouter } from 'react-router-dom';
-import Cell from './cell';
+import Detail from './DetailFormComponent';
+
 
 
 class Main extends Component {
@@ -32,8 +33,9 @@ class Main extends Component {
       <Switch>
       <Route exact path="/home" component={()=><Doctor doctors={this.state.doctors}  />}/>
       <Route path='/home/:doctorId' component={DoctorWithId}/>
-      {/* <Route path='/home/:doctorId' component={Cell}/>  */}
-    
+      <Route exact path="/form" component={()=><Detail  />}/>
+      
+     
       <Redirect to='/home'/>
       </Switch>
       <Footer/>

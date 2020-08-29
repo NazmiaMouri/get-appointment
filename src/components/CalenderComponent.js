@@ -1,26 +1,37 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem,Modal,ModalBody,ModalHeader,Col,Form,FormGroup,Label,Input,Button } from 'reactstrap'
+import { Breadcrumb, BreadcrumbItem,Button } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import { Inject,ViewDirective,ViewsDirective,ScheduleComponent,Week} from '@syncfusion/ej2-react-schedule'
 import moment from 'moment';
 
 class Calender extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isModalOpen: false
+  };
+  this.toggleModal = this.toggleModal.bind(this);
+
+  }
+  toggleModal() {
+    this.setState({
+      isModalOpen: !this.state.isModalOpen
+    });
+   
+  }
  
-    
-    //  "availibility":{
-    //     "sun":"10:00 AM - 06:00 PM",
-    //     "mon":"09:00 PM - 11:00 PM",
-    //     "thu":"11:00 AM - 02:00 PM"
-    //     },
    getWorkCellText(date) {
    
       var i=0;
       let weekEnds = [];
-      let startTime = [];
-      let endTime = [];
+      let startTime = [],endTime = [],startHour = [],endHour = [],startMin = [],endMin = [];
       let splitted=[];
-      let slotCount= 60 / this.props.doctor.visitDurationInMin;
-      let boxHeight= (144 /slotCount) - 7;
+      let today=new Date()
+
+      
+      
+    
+     
 
       for( var day in this.props.doctor.availibility){
           if(this.props.doctor.availibility.hasOwnProperty(day)){
@@ -97,53 +108,38 @@ class Calender extends React.Component {
       
           }
       }
-      
-    
-
-    let today=new Date()
-   
-   if(date.getMonth() < today.getMonth()){
-     
-    if (weekEnds.indexOf(date.getDay()) >= 0 ){
-      if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
-        
-        return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
-      }  
-    }
-  }
+    //----------------------Date and Time matching in Calender ------------------------------- 
+    if(date.getMonth() < today.getMonth()){
+      if (weekEnds.indexOf(date.getDay()) >= 0 ){
+       if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+         return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
+                          }  
+                        }
+                      }
     else if(date.getMonth() === today.getMonth()){
-      
       if(date.getDate() >= today.getDate()){
-        
         if (weekEnds.indexOf(date.getDay()) >= 0 ){
           if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
-    
-            return `<a href='#form'><i class='fa fa-check fa-lg' style=' color:green'></i></a>`;
-          }  
+            return '<a href ="/form" ><i class="fa fa-check fa-lg" style="color:green" ></i></a>'
+                     }  
+                    }
+                  }else if(date.getDate() < today.getDate()){
+                    if (weekEnds.indexOf(date.getDay()) >= 0 ){
+                      if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+                         return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
+                              }  
+                            }
+                          }
+      }
+      else if(date.getMonth() > today.getMonth()){
+       if (weekEnds.indexOf(date.getDay()) >= 0 ){
+         if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+          return '<a href ="/form"><i class="fa fa-check fa-lg" style="color:green" ></i></a>'
+               
+            }  
         }
-      }else if(date.getDate() < today.getDate()){
-        
-        if (weekEnds.indexOf(date.getDay()) >= 0 ){
-          if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
-    
-            return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
-          }  
-        }
-
-          
-    }
-  }
-  else if(date.getMonth() > today.getMonth()){
-    
-    if (weekEnds.indexOf(date.getDay()) >= 0 ){
-      if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
- 
-        return `<a href='#form'><i class='fa fa-check fa-lg' style='color:green'></i></a>`;
-      }  
-    }
-  }
-       
-      return '';
+      }
+        return '';
   
 }
   ;
@@ -162,16 +158,22 @@ class Calender extends React.Component {
       return (
       //-----------------------------------Container START-------------------------------------------// 
       // ---------------------------------------Breadcrumb------------------------------------------//
-            <div className='container '>
+        <div className='container '>
                     <div className="row">
+                     
                      <Breadcrumb>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                             <BreadcrumbItem active>Schedule</BreadcrumbItem>
                        </Breadcrumb>
-                      <div className="col-12">
+                      </div>
+                      <div className='row'>
+                      <div className="col-10">
                            <h3>Schedule of {this.props.doctor.name}</h3>
                             <hr />
-                        </div>                
+                        </div> 
+                        <Link to='/home' className="col-2 ml-auto">
+                           <a className='btn bg-primary' ><i className='fa fa-arrow'></i>Go Back</a>
+                        </Link>                
                     </div>
     {/*---------------------------------CALENDER VIEW --------------------------------------------------  */}
                 <div className='mb-10'>
@@ -185,44 +187,8 @@ class Calender extends React.Component {
                     <Inject services={[Week]}/>
                     </ScheduleComponent>
                 </div>
-  {/* -----------------------------------FORM MODAL--------------------------------------------------- */}
-                 
-                    <Form id='form' >
-                        <FormGroup>
-                            <Label htmlFor='username'>Full Name</Label>
-                            <Input type='text' id='username' name='username' innerRef={(input)=>this.username=input}></Input>
-                        </FormGroup>
-                        <FormGroup>
-                            <Label htmlFor='age'>Age</Label>
-                            <Input type='age' id='age' name='age' innerRef={(input)=>this.password=input}></Input>
-                        </FormGroup>
-                        <FormGroup>
-                        <Col md={{size: 3, offset:1}}>
-                                    <Input type='select' name='genderType'
-                                    >
-                                        <option>Male</option>
-                                        <option>Female</option>
-                                    </Input>
-                                </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                                <Label htmlFor='message' md={2}>Reason</Label>
-                                <Col md={10}>
-                                    <Input type='textarea' id='message' name='message'
-                                    rows='12' />
-                                </Col>
-                            </FormGroup>
-                        <FormGroup row>
-                  
-                                <Col md={{size:10,offset:2}}>
-                                    <Button type='submit' color='primary'>Book</Button>
-                                </Col>
-                            </FormGroup>
-                        
-                      
-                    </Form>
-               
-            </div>
+                </div>
+  
   )
   }
 }
