@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem,Modal,ModalBody,ModalHeader,Form,FormGroup,Label,Input,Button } from 'reactstrap'
+import { Breadcrumb, BreadcrumbItem,Modal,ModalBody,ModalHeader,Col,Form,FormGroup,Label,Input,Button } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import { Inject,ViewDirective,ViewsDirective,ScheduleComponent,Week} from '@syncfusion/ej2-react-schedule'
 import moment from 'moment';
@@ -106,8 +106,8 @@ class Calender extends React.Component {
      
     if (weekEnds.indexOf(date.getDay()) >= 0 ){
       if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
- 
-        return `<a href='#form'><i class='fa fa-check' style='color:gray'></i></a>`;
+        
+        return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
       }  
     }
   }
@@ -118,7 +118,7 @@ class Calender extends React.Component {
         if (weekEnds.indexOf(date.getDay()) >= 0 ){
           if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
     
-            return `<a href='#form'><i class='fa fa-check' style='color:green'></i></a>`;
+            return `<a href='#form'><i class='fa fa-check fa-lg' style=' color:green'></i></a>`;
           }  
         }
       }else if(date.getDate() < today.getDate()){
@@ -126,7 +126,7 @@ class Calender extends React.Component {
         if (weekEnds.indexOf(date.getDay()) >= 0 ){
           if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
     
-            return `<a href='#form'><i class='fa fa-check' style='color:gray'></i></a>`;
+            return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
           }  
         }
 
@@ -138,7 +138,7 @@ class Calender extends React.Component {
     if (weekEnds.indexOf(date.getDay()) >= 0 ){
       if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
  
-        return `<a href='#form'><i class='fa fa-check' style='color:green'></i></a>`;
+        return `<a href='#form'><i class='fa fa-check fa-lg' style='color:green'></i></a>`;
       }  
     }
   }
@@ -154,6 +154,10 @@ class Calender extends React.Component {
   
       return (<div></div>);
   }
+  ;
+  onPopupOpen(args) {
+    args.cancel = true;
+}
   render(){
       return (
       //-----------------------------------Container START-------------------------------------------// 
@@ -171,7 +175,7 @@ class Calender extends React.Component {
                     </div>
     {/*---------------------------------CALENDER VIEW --------------------------------------------------  */}
                 <div className='mb-10'>
-                    <ScheduleComponent  height='500px'  cellTemplate={this.cellTemplate.bind(this)}>
+                    <ScheduleComponent  height='500px'  cellTemplate={this.cellTemplate.bind(this)} popupOpen={this.onPopupOpen.bind(this)}>
                       <ViewsDirective>
                         
                         <ViewDirective option='Week' startHour='08:00' endHour='25:00' timeScale={{ enable: true, slotCount: 60/this.props.doctor.visitDurationInMin }}/>
@@ -182,10 +186,8 @@ class Calender extends React.Component {
                     </ScheduleComponent>
                 </div>
   {/* -----------------------------------FORM MODAL--------------------------------------------------- */}
-                 <Modal id='form'>
-                <ModalHeader>Add Details</ModalHeader>
-                <ModalBody>
-                    <Form >
+                 
+                    <Form id='form' >
                         <FormGroup>
                             <Label htmlFor='username'>Full Name</Label>
                             <Input type='text' id='username' name='username' innerRef={(input)=>this.username=input}></Input>
@@ -195,14 +197,31 @@ class Calender extends React.Component {
                             <Input type='age' id='age' name='age' innerRef={(input)=>this.password=input}></Input>
                         </FormGroup>
                         <FormGroup>
-                            <Label htmlFor='gender'>Age</Label>
-                            <Input type='gender' id='gender' name='gender' innerRef={(input)=>this.password=input}></Input>
+                        <Col md={{size: 3, offset:1}}>
+                                    <Input type='select' name='genderType'
+                                    >
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </Input>
+                                </Col>
                         </FormGroup>
+                        <FormGroup row>
+                                <Label htmlFor='message' md={2}>Reason</Label>
+                                <Col md={10}>
+                                    <Input type='textarea' id='message' name='message'
+                                    rows='12' />
+                                </Col>
+                            </FormGroup>
+                        <FormGroup row>
+                  
+                                <Col md={{size:10,offset:2}}>
+                                    <Button type='submit' color='primary'>Book</Button>
+                                </Col>
+                            </FormGroup>
                         
-                        <Button type='submit' value='submit' className='primary' >Book</Button>
+                      
                     </Form>
-                </ModalBody>
-            </Modal> 
+               
             </div>
   )
   }

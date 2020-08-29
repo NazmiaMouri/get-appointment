@@ -32,7 +32,7 @@ class Main extends Component {
       <Switch>
       <Route exact path="/home" component={()=><Doctor doctors={this.state.doctors}  />}/>
       <Route path='/home/:doctorId' component={DoctorWithId}/>
-      {/* <Route path='/home/:doctorId' component={Cell}/> */}
+      {/* <Route path='/home/:doctorId' component={Cell}/>  */}
     
       <Redirect to='/home'/>
       </Switch>
