@@ -82,6 +82,36 @@ class  Detail extends Component{
                                     }}/>
                                 </Col>
                                 </Row>
+                                <Row className='form-group'>
+                                <Label htmlFor='age' md={2}>Age</Label>
+                                <Col md={5}>
+                                    <Control.text model=".age" id='age' name='age'
+                                    placeholder='Age'
+                                    className='form-control'
+                                    validators={{
+                                        required,
+                                        isNumber}
+                                        }/>
+                                    
+                                    <Errors className='text-danger'
+                                    model='.age'
+                                    show='touched'
+                                    messages={{
+                                        required: 'Required',
+                                        isNumber: 'Must be a Number'
+                                       
+                                    }}/>
+                                </Col>
+                                <Col md={{size: 3, offset:1}}>
+                                    <Control.select model='.genderType'name='genderType'
+                                    className='form-control'>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </Control.select>
+                                </Col>
+                                </Row>
+                                
+                                
                             <Row className='form-group'>
                                 <Label htmlFor='telnum' md={2}>Contact Tel.</Label>
                                 <Col md={10}>
@@ -126,26 +156,7 @@ class  Detail extends Component{
                                    
                                 </Col>
                                 </Row>
-                            <Row className='form-group'>
-                                <Col md={{size: 6, offset:2}}>
-                                    <div className='form-check'>
-                                        <Label check>
-                                            <Control.checkbox model=".agree" name='agree'
-                                            className='form-check-input'
-                                            
-                                          />{' '}
-                                            <strong>May we contact you?</strong>
-                                        </Label>
-                                    </div>
-                                </Col>
-                                <Col md={{size: 3, offset:1}}>
-                                    <Control.select model='.contactType'name='contactType'
-                                    className='form-control'>
-                                        <option>Tel.</option>
-                                        <option>Email</option>
-                                    </Control.select>
-                                </Col>
-                                </Row>
+                               
                             <Row className='form-group'>
                                 <Label htmlFor='message' md={2}>Reason to Visit</Label>
                                 <Col md={10}>
