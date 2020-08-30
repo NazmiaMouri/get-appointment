@@ -33,7 +33,10 @@ address{
 .e-control{
   margin-bottom: 50px;
 }
-.e-work-cell .e-alternate-cells{
-      display: invisible;
+#myInput {
+  width:50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid gray;
+  margin-bottom: 12px;
 }
-
