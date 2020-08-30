@@ -3,7 +3,7 @@ export const DOCTORS =
         {
         "id":"1",
         "name":"Dr. John Doe",
-        "image": '/assets/doctor.jpg',
+        "image": '/assets/male.jpg',
         "org":"Kings London Hospital",
         "availibility":{
         "sun":"10:00 AM - 06:00 PM",
@@ -14,7 +14,7 @@ export const DOCTORS =
         {
         "id":"2",
         "name":"Dr. Mary Ellis",
-        "image": "/assets/doctor.jpg",
+        "image": "/assets/female.png",
         "org":"ABC Hospital",
         "availibility":{
         "sun":"10:00 AM - 06:00 PM",
@@ -26,7 +26,7 @@ export const DOCTORS =
         {
             "id":"3",
             "name":"Dr. John Doe",
-            "image": '/assets/doctor.jpg',
+            "image": '/assets/male.jpg',
             "org":"Kings London Hospital",
             "availibility":{
             "sun":"10:00 AM - 06:00 PM",
@@ -37,7 +37,7 @@ export const DOCTORS =
             {
             "id":"4",
             "name":"Dr. Mary Ellis",
-            "image": "/assets/doctor.jpg",
+            "image": "/assets/female.png",
             "org":"ABC Hospital",
             "availibility":{
             "sun":"10:00 AM - 06:00 PM",

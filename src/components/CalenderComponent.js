@@ -19,8 +19,8 @@ class Calender extends React.Component {
    
       var i=0;
       let weekEnds = [];
-      let startTime = [],endTime = [],startHour = [],endHour = [],startMin = [],endMin = [];
-      let splitted=[],splitStart=[],splitEnd=[];
+      let startTime = [],endTime = [];
+      let splitted=[];
       let today=new Date()
 
       
@@ -38,15 +38,7 @@ class Calender extends React.Component {
                     weekEnds[i]=0;
                     splitted=time.split("-")
                     startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
-                    splitStart=startTime[i].split(":")
-                    startHour[i]=splitStart[0]
-                    startMin[i]=splitStart[1]
                     endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
-                    splitEnd=endTime[i].split(":")
-                    endHour[i]=splitEnd[0]
-                    endMin[i]=splitEnd[1]
-                    
-                   
                     i++;
                     break;
                 }
@@ -54,55 +46,31 @@ class Calender extends React.Component {
                     weekEnds[i]=1;
                     splitted=time.split("-")
                     startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
-                    splitStart=startTime[i].split(":")
-                    startHour[i]=splitStart[0]
-                    startMin[i]=splitStart[1]
                     endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
-                    splitEnd=endTime[i].split(":")
-                    endHour[i]=splitEnd[0]
-                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
                   case "tue":{
                     weekEnds[i]=2;
                     splitted=time.split("-")
-                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    splitStart=startTime[i].split(":")
-                    startHour[i]=splitStart[0]
-                    startMin[i]=splitStart[1]
+                    startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
                     endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
-                    splitEnd=endTime[i].split(":")
-                    endHour[i]=splitEnd[0]
-                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
                   case "wed":{
                     weekEnds[i]=3;
                     splitted=time.split("-")
-                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    splitStart=startTime[i].split(":")
-                    startHour[i]=splitStart[0]
-                    startMin[i]=splitStart[1]
+                    startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
                     endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
-                    splitEnd=endTime[i].split(":")
-                    endHour[i]=splitEnd[0]
-                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
                   case "thu":{
                     weekEnds[i]=4;
                     splitted=time.split("-")
-                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    splitStart=startTime[i].split(":")
-                    startHour[i]=splitStart[0]
-                    startMin[i]=splitStart[1]
+                    startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
                     endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
-                    splitEnd=endTime[i].split(":")
-                    endHour[i]=splitEnd[0]
-                    endMin[i]=splitEnd[1]
                     
                     i++;
                   break;
@@ -110,28 +78,16 @@ class Calender extends React.Component {
                   case "fri":{
                     weekEnds[i]=5;
                     splitted=time.split("-")
-                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    splitStart=startTime[i].split(":")
-                    startHour[i]=splitStart[0]
-                    startMin[i]=splitStart[1]
+                    startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
                     endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
-                    splitEnd=endTime[i].split(":")
-                    endHour[i]=splitEnd[0]
-                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
               case "sat":{
                 weekEnds[i]=6;
                 splitted=time.split("-")
-                startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                splitStart=startTime[i].split(":")
-                startHour[i]=splitStart[0]
-                startMin[i]=splitStart[1]
+                startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
                 endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
-                splitEnd=endTime[i].split(":")
-                endHour[i]=splitEnd[0]
-                endMin[i]=splitEnd[1]
                    
                 i++;
               break;
