@@ -5,6 +5,7 @@ export const DOCTORS =
         "name":"Dr. John Doe",
         "image": '/assets/male.jpg',
         "org":"Kings London Hospital",
+        "specialization":"Cardiologist",
         "availibility":{
         "sun":"10:00 AM - 06:00 PM",
         "wed":"06:00 PM - 09:00 PM"
@@ -16,6 +17,7 @@ export const DOCTORS =
         "name":"Dr. Mary Ellis",
         "image": "/assets/female.png",
         "org":"ABC Hospital",
+        "specialization":"Gynecologist",
         "availibility":{
         "sun":"10:00 AM - 06:00 PM",
         "mon":"09:00 PM - 11:00 PM",
@@ -28,6 +30,7 @@ export const DOCTORS =
             "name":"Dr. John Doe",
             "image": '/assets/male.jpg',
             "org":"Kings London Hospital",
+            "specialization":"Neurologist",
             "availibility":{
             "sun":"10:00 AM - 06:00 PM",
             "wed":"06:00 PM - 09:00 PM"
@@ -39,6 +42,7 @@ export const DOCTORS =
             "name":"Dr. Mary Ellis",
             "image": "/assets/female.png",
             "org":"ABC Hospital",
+            "specialization":"Psychiatrist",
             "availibility":{
             "sun":"10:00 AM - 06:00 PM",
             "mon":"09:00 PM - 11:00 PM",

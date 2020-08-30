@@ -17,6 +17,7 @@ function Doctor (props){
                     <Media body className='ml-5'>
                     <Media heading>{doctor.name}</Media>
                     <h6> {doctor.org}</h6> 
+                    <h7> {doctor.specialization}</h7> 
                    
                 
                     </Media>
