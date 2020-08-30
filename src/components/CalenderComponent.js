@@ -19,8 +19,8 @@ class Calender extends React.Component {
    
       var i=0;
       let weekEnds = [];
-      let startTime = [],endTime = [];
-      let splitted=[];
+      let startTime = [],endTime = [],startHour = [],endHour = [],startMin = [],endMin = [];
+      let splitted=[],splitStart=[],splitEnd=[];
       let today=new Date()
 
       
@@ -37,8 +37,15 @@ class Calender extends React.Component {
                   case "sun":{
                     weekEnds[i]=0;
                     splitted=time.split("-")
-                    startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
+                    startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
+                    splitStart=startTime[i].split(":")
+                    startHour[i]=splitStart[0]
+                    startMin[i]=splitStart[1]
+                    endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
+                    splitEnd=endTime[i].split(":")
+                    endHour[i]=splitEnd[0]
+                    endMin[i]=splitEnd[1]
+                    
                    
                     i++;
                     break;
@@ -46,33 +53,56 @@ class Calender extends React.Component {
                   case "mon":{
                     weekEnds[i]=1;
                     splitted=time.split("-")
-                    startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
-                   
+                    startTime[i]=moment(splitted[0],["h:mm A"]).format("HH:mm")
+                    splitStart=startTime[i].split(":")
+                    startHour[i]=splitStart[0]
+                    startMin[i]=splitStart[1]
+                    endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
+                    splitEnd=endTime[i].split(":")
+                    endHour[i]=splitEnd[0]
+                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
                   case "tue":{
                     weekEnds[i]=2;
                     splitted=time.split("-")
-                    startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
+                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
+                    splitStart=startTime[i].split(":")
+                    startHour[i]=splitStart[0]
+                    startMin[i]=splitStart[1]
+                    endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
+                    splitEnd=endTime[i].split(":")
+                    endHour[i]=splitEnd[0]
+                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
                   case "wed":{
                     weekEnds[i]=3;
                     splitted=time.split("-")
-                    startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
+                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
+                    splitStart=startTime[i].split(":")
+                    startHour[i]=splitStart[0]
+                    startMin[i]=splitStart[1]
+                    endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
+                    splitEnd=endTime[i].split(":")
+                    endHour[i]=splitEnd[0]
+                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
                   case "thu":{
                     weekEnds[i]=4;
                     splitted=time.split("-")
-                    startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
+                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
+                    splitStart=startTime[i].split(":")
+                    startHour[i]=splitStart[0]
+                    startMin[i]=splitStart[1]
+                    endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
+                    splitEnd=endTime[i].split(":")
+                    endHour[i]=splitEnd[0]
+                    endMin[i]=splitEnd[1]
                     
                     i++;
                   break;
@@ -80,16 +110,28 @@ class Calender extends React.Component {
                   case "fri":{
                     weekEnds[i]=5;
                     splitted=time.split("-")
-                    startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                    endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
+                    startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
+                    splitStart=startTime[i].split(":")
+                    startHour[i]=splitStart[0]
+                    startMin[i]=splitStart[1]
+                    endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
+                    splitEnd=endTime[i].split(":")
+                    endHour[i]=splitEnd[0]
+                    endMin[i]=splitEnd[1]
                     i++;
                   break;
               }
               case "sat":{
                 weekEnds[i]=6;
                 splitted=time.split("-")
-                startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
-                endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
+                startTime[i]=(moment(splitted[0],["h:mm A"]).format("HH:mm"))
+                splitStart=startTime[i].split(":")
+                startHour[i]=splitStart[0]
+                startMin[i]=splitStart[1]
+                endTime[i]=moment(splitted[1],["h:mm A"]).format("HH:mm")
+                splitEnd=endTime[i].split(":")
+                endHour[i]=splitEnd[0]
+                endMin[i]=splitEnd[1]
                    
                 i++;
               break;
@@ -101,42 +143,46 @@ class Calender extends React.Component {
           }
       }
      
-      let dateTime=moment(date,["h:mm A"]).format("HH:mm")
+      
+     
+      
     //----------------------Date and Time matching in Calender ------------------------------- 
-    if(date.getMonth() < today.getMonth()){
+    
+    if(moment(date).isBefore(today)){
       if (weekEnds.indexOf(date.getDay()) >= 0 ){
-       if(startTime[weekEnds.indexOf(date.getDay())] <=date.getHours() && date.getHours()<= endTime[weekEnds.indexOf(date.getDay())]){
-         return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
-                          }  
-                        }
-                      }
-    else if(date.getMonth() === today.getMonth()){
-      if(date.getDate() >= today.getDate()){
-       if (weekEnds.indexOf(date.getDay()) >= 0 ){
-         if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
-           
-              return '<a href ="/form" ><i class="fa fa-check fa-lg" style="color:green" ></i></a>'
-                     }  
-                   }
-                  }else if(date.getDate() < today.getDate()){
-                    if (weekEnds.indexOf(date.getDay()) >= 0 ){
-                      if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
-                         return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
-                              }  
-                            }
-                          }
-      }
-      else if(date.getMonth() > today.getMonth()){
-       if (weekEnds.indexOf(date.getDay()) >= 0 ){
-         if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
-          return '<a href ="/form"><i class="fa fa-check fa-lg" style="color:green" ></i></a>'
-               
-            }  
-        }
-      }
-        return '';
-
-   
+        
+         let dateTime=moment(date,["h:mm A"]).format("HH:mm")
+         let startSec=moment.duration(startTime[weekEnds.indexOf(date.getDay())]).asSeconds()
+         let endSec=moment.duration(endTime[weekEnds.indexOf(date.getDay())]).asSeconds()
+         let dateSec=moment.duration(dateTime).asSeconds()
+         if(startSec <= dateSec && endSec>= dateSec){
+            return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
+       }
+    }
+  }
+    else if(moment(date).isSame(today)){
+      if (weekEnds.indexOf(date.getDay()) >= 0 ){
+        let dateTime=moment(date,["h:mm A"]).format("HH:mm")
+         let startSec=moment.duration(startTime[weekEnds.indexOf(date.getDay())]).asSeconds()
+         let endSec=moment.duration(endTime[weekEnds.indexOf(date.getDay())]).asSeconds()
+         let dateSec=moment.duration(dateTime).asSeconds()
+         if(startSec <= dateSec && endSec>= dateSec){
+            return `<i class='fa fa-check fa-lg' style='color:green'></i>`;
+          }
+    }
+  }
+    else if(moment(date).isAfter(today)){
+      if (weekEnds.indexOf(date.getDay()) >= 0 ){
+        let dateTime=moment(date,["h:mm A"]).format("HH:mm")
+         let startSec=moment.duration(startTime[weekEnds.indexOf(date.getDay())]).asSeconds()
+         let endSec=moment.duration(endTime[weekEnds.indexOf(date.getDay())]).asSeconds()
+         let dateSec=moment.duration(dateTime).asSeconds()
+        if(startSec <= dateSec && endSec>= dateSec){
+          return `<i class='fa fa-check fa-lg' style='color:green'></i>`;
+           }
+    }
+  }
+    return '';
 }
   ;
   //------------------------cellTemplate--------------------------//
