@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem,Button } from 'reactstrap'
+import { Breadcrumb, BreadcrumbItem } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import { Inject,ViewDirective,ViewsDirective,ScheduleComponent,Week} from '@syncfusion/ej2-react-schedule'
 import moment from 'moment';
@@ -8,23 +8,18 @@ class Calender extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isModalOpen: false
+      
   };
-  this.toggleModal = this.toggleModal.bind(this);
+  
 
   }
-  toggleModal() {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen
-    });
-   
-  }
+  
  
    getWorkCellText(date) {
    
       var i=0;
       let weekEnds = [];
-      let startTime = [],endTime = [],startHour = [],endHour = [],startMin = [],endMin = [];
+      let startTime = [],endTime = [];
       let splitted=[];
       let today=new Date()
 
@@ -62,7 +57,6 @@ class Calender extends React.Component {
                     splitted=time.split("-")
                     startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
                     endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
-                   
                     i++;
                   break;
               }
@@ -71,7 +65,6 @@ class Calender extends React.Component {
                     splitted=time.split("-")
                     startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
                     endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
-                    
                     i++;
                   break;
               }
@@ -89,7 +82,6 @@ class Calender extends React.Component {
                     splitted=time.split("-")
                     startTime[i]=parseInt(moment(splitted[0],["h:mm A"]).format("HH:mm"))
                     endTime[i]=parseInt(moment(splitted[1],["h:mm A"]).format("HH:mm"))
-                  
                     i++;
                   break;
               }
@@ -108,21 +100,24 @@ class Calender extends React.Component {
       
           }
       }
+     
+      let dateTime=moment(date,["h:mm A"]).format("HH:mm")
     //----------------------Date and Time matching in Calender ------------------------------- 
     if(date.getMonth() < today.getMonth()){
       if (weekEnds.indexOf(date.getDay()) >= 0 ){
-       if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+       if(startTime[weekEnds.indexOf(date.getDay())] <=date.getHours() && date.getHours()<= endTime[weekEnds.indexOf(date.getDay())]){
          return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
                           }  
                         }
                       }
     else if(date.getMonth() === today.getMonth()){
       if(date.getDate() >= today.getDate()){
-        if (weekEnds.indexOf(date.getDay()) >= 0 ){
-          if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
-            return '<a href ="/form" ><i class="fa fa-check fa-lg" style="color:green" ></i></a>'
+       if (weekEnds.indexOf(date.getDay()) >= 0 ){
+         if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
+           
+              return '<a href ="/form" ><i class="fa fa-check fa-lg" style="color:green" ></i></a>'
                      }  
-                    }
+                   }
                   }else if(date.getDate() < today.getDate()){
                     if (weekEnds.indexOf(date.getDay()) >= 0 ){
                       if(startTime[weekEnds.indexOf(date.getDay())] <= date.getHours() && date.getHours() <= endTime[weekEnds.indexOf(date.getDay())]){
@@ -140,9 +135,11 @@ class Calender extends React.Component {
         }
       }
         return '';
-  
+
+   
 }
   ;
+  //------------------------cellTemplate--------------------------//
   cellTemplate(props) {
       if (props.type === "workCells") {
           return (<div className="templatewrap" dangerouslySetInnerHTML={{ __html: this.getWorkCellText(props.date) }}></div>);
@@ -151,6 +148,7 @@ class Calender extends React.Component {
       return (<div></div>);
   }
   ;
+  //----------------------------PopUpOff----------------------------//
   onPopupOpen(args) {
     args.cancel = true;
 }
@@ -168,11 +166,12 @@ class Calender extends React.Component {
                       </div>
                       <div className='row'>
                       <div className="col-10">
-                           <h3>Schedule of {this.props.doctor.name}</h3>
+                           <h3 className="col-6">Schedule of {this.props.doctor.name} </h3>
+                           <h5 className="col-4">Visit duration: {this.props.doctor.visitDurationInMin} min.</h5>
                             <hr />
                         </div> 
                         <Link to='/home' className="col-2 ml-auto">
-                           <a className='btn bg-primary' ><i className='fa fa-arrow'></i>Go Back</a>
+                           <a className='btn bg-success' style={{color: "white"}}><i className='fa fa-chevron-left'></i> Go Back</a>
                         </Link>                
                     </div>
     {/*---------------------------------CALENDER VIEW --------------------------------------------------  */}
@@ -186,7 +185,7 @@ class Calender extends React.Component {
                       </ViewsDirective>
                     <Inject services={[Week]}/>
                     </ScheduleComponent>
-                </div>
+                 </div>
                 </div>
   
   )

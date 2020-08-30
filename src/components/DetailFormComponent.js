@@ -38,6 +38,7 @@ class  Detail extends Component{
                     <div className='col-12'>
                         <h3 >Add Details</h3>
                     </div>
+                    
                     <div className='col-12 col-md-9'>
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className='form-group'>
