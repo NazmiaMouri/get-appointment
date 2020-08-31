@@ -32,8 +32,8 @@ export const DOCTORS =
             "org":"Kings London Hospital",
             "specialization":"Neurologist",
             "availibility":{
-            "sun":"10:00 AM - 06:00 PM",
-            "wed":"06:00 PM - 09:00 PM"
+            "sun":"10:30 AM - 06:00 PM",
+            "wed":"06:00 PM - 09:45 PM"
             },
             "visitDurationInMin":15
             },
@@ -44,8 +44,8 @@ export const DOCTORS =
             "org":"ABC Hospital",
             "specialization":"Psychiatrist",
             "availibility":{
-            "sun":"10:00 AM - 06:00 PM",
-            "mon":"09:00 PM - 11:00 PM",
+            "sun":"10:00 AM - 06:40 PM",
+            "mon":"09:00 PM - 11:30 PM",
             "thu":"11:00 AM - 02:00 PM"
             },
             "visitDurationInMin":20
