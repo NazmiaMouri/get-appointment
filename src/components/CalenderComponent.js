@@ -111,7 +111,7 @@ class Calender extends React.Component {
          let startSec=moment.duration(startTime[weekEnds.indexOf(date.getDay())]).asSeconds()
          let endSec=moment.duration(endTime[weekEnds.indexOf(date.getDay())]).asSeconds()
          let dateSec=moment.duration(dateTime).asSeconds()
-         if(startSec <= dateSec && endSec>= dateSec){
+         if(startSec <= dateSec && endSec> dateSec){
             return `<i class='fa fa-check fa-lg' style='color:gray'></i>`;
        }
     }
@@ -122,7 +122,7 @@ class Calender extends React.Component {
          let startSec=moment.duration(startTime[weekEnds.indexOf(date.getDay())]).asSeconds()
          let endSec=moment.duration(endTime[weekEnds.indexOf(date.getDay())]).asSeconds()
          let dateSec=moment.duration(dateTime).asSeconds()
-         if(startSec <= dateSec && endSec>= dateSec){
+         if(startSec <= dateSec && endSec> dateSec){
             return `<a href='/form'><i class='fa fa-check fa-lg' style='color:green'></i></a>`;
           }
     }
@@ -133,7 +133,7 @@ class Calender extends React.Component {
          let startSec=moment.duration(startTime[weekEnds.indexOf(date.getDay())]).asSeconds()
          let endSec=moment.duration(endTime[weekEnds.indexOf(date.getDay())]).asSeconds()
          let dateSec=moment.duration(dateTime).asSeconds()
-        if(startSec <= dateSec && endSec>= dateSec){
+        if(startSec <= dateSec && endSec> dateSec){
           return `<a href='/form'><i class='fa fa-check fa-lg' style='color:green'></i></a>`;
            }
     }
